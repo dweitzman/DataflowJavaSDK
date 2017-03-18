@@ -236,11 +236,12 @@ public class DataflowPipelineRunner extends PipelineRunner<DataflowPipelineJob> 
 
   /**
    * Project IDs must contain lowercase letters, digits, or dashes.
-   * IDs must start with a letter and may not end with a dash.
+   * Normally IDs must start with a letter and may not end with a dash.
+   * Very old project IDs may also start with a number.
    * This regex isn't exact - this allows for patterns that would be rejected by
    * the service, but this is sufficient for basic validation of project IDs.
    */
-  public static final String PROJECT_ID_REGEXP = "[a-z][-a-z0-9:.]+[a-z0-9]";
+  public static final String PROJECT_ID_REGEXP = "[a-z0-9][-a-z0-9:.]+[a-z0-9]";
 
   private static final JsonFactory JSON_FACTORY = Transport.getJsonFactory();
   /**
